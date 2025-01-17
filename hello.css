@@ -1,8 +1,33 @@
 body {
+    background-image: url('html.png');
+}
+
+.text {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-size: 50px;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(42, 35, 87);
+}
+
+.top-button {
+    background-color: #555; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    border: none; /* ボーダーを消す */
+    padding: 10px 20px; /* ボタンの内側余白 */
+    cursor: pointer; /* マウスを乗せた時にポインタを表示 */
+    font-size: 16px; /* 文字サイズ */
+
+}
+
+.top-button:hover {
+    background-color: #777; /* ホバー時の背景色 */
 }
