@@ -4,6 +4,7 @@ body {
 }
 
 .text {
+    width: 100%;
     background: none;
     border: none;
     font-size:  5vh;
