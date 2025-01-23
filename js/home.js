@@ -1,4 +1,4 @@
-document.getElementById('title').addEventListener('click', () => {
+document.getElementById('index').addEventListener('click', () => {
     window.location.href = 'index.html';
 });
 
