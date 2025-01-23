@@ -4,12 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>カウントボタン</title>
+        <link rel="stylesheet" href="css/style.css">
+
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin-top: 50px;
-            }
+
             #count {
                 font-size:  2rem;
                 font-weight: bold;
@@ -25,7 +23,7 @@
     <body>
         <h1>ボタンカウンター</h1>
         <p id="count">0</p>
-        <button onclick="incrementCount()">カウントを増やす</button>
+        <button class="text" onclick="incrementCount()">カウントを増やす</button>
 
         <script>
             let count = 0;
