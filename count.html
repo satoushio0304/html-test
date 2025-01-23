@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja" >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>カウントボタン</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+            }
+            #count {
+                font-size:  2rem;
+                font-weight: bold;
+                margin: 20px 0;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ボタンカウンター</h1>
+        <p id="count">0</p>
+        <button onclick="incrementCount()">カウントを増やす</button>
+
+        <script>
+            let count = 0;
+            function incrementCount() {
+                count++;
+                document.getElementById("count").innerText = count;
+            }
+        </script>
+    </body>
+</html>
