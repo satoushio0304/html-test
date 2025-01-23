@@ -12,21 +12,15 @@ body {
     color: black;
 }
 
-.top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-}
-
 .top-button {
+    display: flex;
+    font-size:  5vh;
     background-color: rgb(0, 0, 0, 0.3);
     color: rgb(255, 255, 255, 0.8);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 0x rgba(0, 0, 0, 0.5);
 
 }
 
