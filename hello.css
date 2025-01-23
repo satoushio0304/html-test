@@ -7,7 +7,6 @@ body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .top-button {
@@ -17,6 +16,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 
 }
 
