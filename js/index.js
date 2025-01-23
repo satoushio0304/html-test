@@ -1,3 +1,3 @@
-document.getElementById('home').addEventListener('click', () => {
-    window.location.href = 'home.html';
+document.getElementById('button').addEventListener('click', () => {
+    window.location.href = 'button.html';
 });
