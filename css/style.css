@@ -1,14 +1,11 @@
 body {
     background-image: url('../background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 .text {
     background: none;
     border: none;
-    font-size: 50px;
+    font-size:  5vh;
     cursor: pointer;
     color: black;
 }
