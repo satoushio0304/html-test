@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     top2Button.addEventListener('click', () => {
-        window.location.href = 'form.html'; // Homeボタンの処理
+        window.location.href = 'input.html'; // Homeボタンの処理
     });
 
     decrementButton.addEventListener('click', () => {
