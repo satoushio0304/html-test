@@ -2,53 +2,31 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>電卓</title>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/calculator.js" defer></script>
     </head>
     <body>
+ 
         <button class="text" id="index">トップ画面</button>
+        
+        <section class="button-area">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">0</button>
+        </section>
 
-        <div class="yoko">
-            <button class="button" id="lef-par">(</button>
-            <button class="button" id="rig-par">)</button>
-            <button class="button" id="cle">C</button>
-            <button class="button" id="all-cle">AC</button>
-        </div>
-
-        <div class="yoko">
-            <button class="button" id="1">1</button>
-            <button class="button" id="2">2</button>
-            <button class="button" id="3">3</button>
-            <button class="button" id="div">÷</button>
-        </div>
-
-        <div class="yoko">
-            <button class="button" id="4">4</button>
-            <button class="button" id="5">5</button>
-            <button class="button" id="6">6</button>
-            <button class="button" id="mul">×</button>
-        </div>
-
-        <div class="yoko">
-            <button class="button" id="7">7</button>
-            <button class="button" id="8">8</button>
-            <button class="button" id="9">9</button>
-            <button class="button" id="sub">-</button>
-        </div>
-
-        <div class="yoko">
-            <button class="button" id="dec">.</button>
-            <button class="button" id="0">0</button>
-            <button class="button" id="equ">=</button>
-            <button class="button" id="add">+</button>
-        </div>
-
-        <div class="yoko">
-            <p class="text" id="str3"></p>
-            <p class="text" id="str2"></p>
-            <p class="text" id="str1"></p>
+        <div class="output-area">
+            <label for="display">計算結果</label>
+            <output id="display">0</output>
         </div>
 
     </body>

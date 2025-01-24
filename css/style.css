@@ -12,7 +12,7 @@ body {
     color: black;
 }
 
-.yoko {
+.button-area {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,4 +32,10 @@ body {
 
 .button:hover {
     background-color: rgb(0, 0, 0, 0.2);
+}
+
+.output-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
