@@ -4,6 +4,26 @@ document.getElementById('index').addEventListener('click', () => {
     window.location.href = 'index.html';
 });
 
+document.getElementById('lef-par').addEventListener('click', () => {
+    num = num + "(";
+    document.getElementById("num").innerText = num;
+});
+
+document.getElementById('rig-par').addEventListener('click', () => {
+    num = num + ")";
+    document.getElementById("num").innerText = num;
+});
+
+document.getElementById('cle').addEventListener('click', () => {
+    num = "";
+    document.getElementById("num").innerText = num;
+});
+
+document.getElementById('all-cle').addEventListener('click', () => {
+    num = "";
+    document.getElementById("num").innerText = num;
+});
+
 document.getElementById('1').addEventListener('click', () => {
     num = num + "1";
     document.getElementById("num").innerText = num;
