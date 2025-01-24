@@ -19,7 +19,7 @@ body {
 }
 
 .button {
-    width: 3em;
+    width: 25%;
     background-color: rgb(0, 0, 0, 0.3);
     color: rgb(255, 255, 255, 0.8);
     border: none;
