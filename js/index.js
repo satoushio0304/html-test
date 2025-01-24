@@ -1,3 +1,3 @@
 document.getElementById('button').addEventListener('click', () => {
-    window.location.href = 'button.html';
+    window.location.href = 'calculator.html';
 });
