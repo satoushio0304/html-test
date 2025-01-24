@@ -8,7 +8,7 @@ body {
     background: none;
     border: none;
     font-size:  5vh;
-    cursor: pointer;
+    cursor: postrer;
     color: black;
 }
 
@@ -24,7 +24,7 @@ body {
     color: rgb(255, 255, 255, 0.8);
     border: none;
     
-    cursor: pointer;
+    cursor: postrer;
     font-size: 5vh;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 
