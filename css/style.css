@@ -1,6 +1,7 @@
 body {
     background-image: url('../img//background.jpg');
-    text-align: center;    
+    touch-action: manipulation;
+    text-align: center;
 }
 
 .text {
