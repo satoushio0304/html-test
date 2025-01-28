@@ -45,7 +45,13 @@ buttons.forEach(button => {
             num = result;
             ope = this.textContent;
             
-        } else {
+        } else if (this.textContent == "C") {
+            display.textContent = 0;
+            formula = 0;
+            num = 0;
+            ope = 0;
+
+        }else {
             num += this.textContent;
         }
     });
