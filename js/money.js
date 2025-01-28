@@ -2,20 +2,12 @@ document.getElementById('index').addEventListener('click', () => {
     window.location.href = 'index.html';
 });
 
-function displayData(data) {
-    const tableBody = document.getElementById('data')
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.price}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-};
+const data = [
+    { id:1, name:"ハンコ", price:380 },
+    { id:2, name:"病院", price:2690 },
+    { id:3, name:"薬局", price:1490 }
+];
 
-document.addEventListener('DOMContentLoaded', () => {
-    displayData(data);
-});
-    
+const display = document.getElementById('display');
+
+display.textContent = data[0].name;
