@@ -1,4 +1,4 @@
-f('index')
+f('index');
 
 const data = [
     { id:1, name:"ハンコ", price:380 },

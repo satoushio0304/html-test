@@ -1,3 +1,3 @@
-f('calculator')
-f('calculator2')
-f('money')
+f('calculator');
+f('calculator2');
+f('money');
