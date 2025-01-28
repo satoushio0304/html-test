@@ -44,6 +44,7 @@ buttons.forEach(button => {
             formula = result;
             num = result;
             ope = this.textContent;
+            
         } else {
             num += this.textContent;
         }
