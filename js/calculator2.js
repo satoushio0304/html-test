@@ -1,10 +1,21 @@
-g = x =>{
+let display = "";
 
-    document.getElementById(x).addEventListener('click', function() {
-        document.getElementById('display').textContent = this.textContent;
-    })
+
+
+
+
+document.querySelectorAll('.button').forEach(button => {
+
+    button.addEventListener('click', function() {
+
+        if (this.textContent == "C") {
+            display = "";
+        } else if (this.textContent == "=") {
+            display = result(display);
+        } else {
+            display += this.textContent;
+        }
+        document.getElementById('display').textContent = display;
+    });
     
-};
-
-g('1')
-g('2')
+});

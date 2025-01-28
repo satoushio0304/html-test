@@ -1,6 +1,6 @@
 document.querySelectorAll('.title').forEach(title => {
-    
-    document.getElementById(title.id).addEventListener('click', () => {
+
+    title.addEventListener('click', () => {
         window.location.href = title.id + '.html';
     });
 
