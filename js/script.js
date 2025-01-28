@@ -1,7 +1,7 @@
-const f = x => {
+document.querySelectorAll('.title').forEach(title => {
     
-    document.getElementById(x).addEventListener('click', () => {
-        window.location.href = x + '.html';
+    document.getElementById(title.id).addEventListener('click', () => {
+        window.location.href = title.id + '.html';
     });
 
-}
+});

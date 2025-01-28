@@ -1,5 +1,3 @@
-f('index');
-
 const data = [
     { id:1, name:"ハンコ", price:380 },
     { id:2, name:"病院", price:2690 },
