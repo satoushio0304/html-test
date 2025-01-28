@@ -1,6 +1,4 @@
-document.getElementById('index').addEventListener('click', () => {
-    window.location.href = 'index.html';
-});
+f('index')
 
 const data = [
     { id:1, name:"ハンコ", price:380 },
