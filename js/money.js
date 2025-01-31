@@ -6,4 +6,7 @@ var data = [
 
 var data = JSON.parse(data);
 
+Object.keys(data).forEach(function(i) {
+    data[i];
+
 document.getElementById('display') = document.createTextNode(data[i].price)
