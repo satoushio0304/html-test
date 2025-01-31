@@ -5,6 +5,8 @@ var data = [
 ];
 
 
+var sum = 0;
+
 for (let i = 0; i < data.length; i++) {
     var li = document.createElement('li');
     li.innerHTML = data[i].id;
@@ -21,13 +23,8 @@ for (let i = 0; i < data.length; i++) {
     var li = document.createElement('li');
     li.innerHTML = data[i].price;
     document.getElementById('price').appendChild(li);
+    sum += Number(data[i].price);
 }
-/*
-var data = JSON.parse(data);
 
-Object.keys(data).forEach(function(i) {
-    var li = document.createElement('li');
-    li.textContent = data[i].name;
-    document.getElementById('display').appendChild();
-}
-*/
+document.getElementById('sum').textContent = sum;
+
