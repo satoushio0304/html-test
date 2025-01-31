@@ -6,15 +6,15 @@
         <title>電卓</title>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js" defer></script>
-        <script src="js/calculator.js" defer></script>
+        <script src="js/calculator2.js" defer></script>
     </head>
     <body>
  
         <button class="title" id="index">トップ画面</button>
-        
+
         <section class="button-area">          
-            <button class="button">1</button>
-            <button class="button">2</button>
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
             <button class="button">3</button>
         </section>
         <section class="button-area">  
@@ -37,13 +37,15 @@
             <button class="button">=</button>
         </section>
         <section class="button-area">  
+            <button class="button">*</button>
+            <button class="button">/</button>
             <button class="button">C</button>
         </section>
 
         <div class="display-area">
-            <label for="formula">計算</label>
-            <output id="formula">0</output>
+            <label for="display">計算</label>
+            <output id="display">0</output>
         </div>
 
+
     </body>
-</html>
