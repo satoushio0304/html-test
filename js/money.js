@@ -4,6 +4,6 @@ var data = [
     { id:3, name:"薬局", price:1490 }
 ];
 
-var data = JSON.parse(json);
+var data = JSON.parse(data);
 
 document.getElementById('display') = document.createTextNode(data[i].price)
