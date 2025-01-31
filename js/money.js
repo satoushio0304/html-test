@@ -7,8 +7,20 @@ var data = [
 
 for (let i = 0; i < data.length; i++) {
     var li = document.createElement('li');
+    li.innerHTML = data[i].id;
+    document.getElementById('id').appendChild(li);
+}
+
+for (let i = 0; i < data.length; i++) {
+    var li = document.createElement('li');
     li.innerHTML = data[i].name;
-    document.getElementById('display').appendChild(li);
+    document.getElementById('name').appendChild(li);
+}
+
+for (let i = 0; i < data.length; i++) {
+    var li = document.createElement('li');
+    li.innerHTML = data[i].price;
+    document.getElementById('price').appendChild(li);
 }
 /*
 var data = JSON.parse(data);
