@@ -7,7 +7,7 @@ var data = [
 
 
 var li = document.createElement('li');
-li.innerHTML = 'a';
+li.innerHTML = 'b';
 
 document.getElementById('display').appendChild(li);
 
