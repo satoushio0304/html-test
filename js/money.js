@@ -5,12 +5,11 @@ var data = [
 ];
 
 
-
-var li = document.createElement('li');
-li.innerHTML = data[0].name;
-
-document.getElementById('display').appendChild(li);
-
+for (let i = 0; i < data.length; i++) {
+    var li = document.createElement('li');
+    li.innerHTML = data[i].name;
+    document.getElementById('display').appendChild(li);
+}
 /*
 var data = JSON.parse(data);
 
