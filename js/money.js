@@ -7,6 +7,8 @@ var data = [
 var data = JSON.parse(data);
 
 Object.keys(data).forEach(function(i) {
-    data[i].name;
+    var li = document.createElement('li');
+    li.textContent = data[i].name;
+            document.getElementById('display').appendChild();
 
-document.getElementById('display') = document.createTextNode(data[i].price)
+
