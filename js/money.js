@@ -1,9 +1,12 @@
+
+// (1) Use data/data.json
+// (2) Road .json file
+// (3) Use roaded .json file
 var data = [
     { id:1, name:"ハンコ", price:380 },
     { id:2, name:"病院", price:2690 },
     { id:3, name:"薬局", price:1490 }
 ];
-
 
 var sum = 0;
 
