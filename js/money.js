@@ -4,4 +4,4 @@ const data = [
     { id:3, name:"薬局", price:1490 }
 ];
 
-document.getElementById('display') = data[i].price
+document.getElementById('display') = document.createTextNode(data[i].price)
