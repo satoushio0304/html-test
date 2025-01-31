@@ -4,15 +4,12 @@ var data = [
     { id:3, name:"薬局", price:1490 }
 ];
 
-// 親要素を指定する
-var list = document.getElementById('display');
 
-// 追加する要素を作成
+
 var li = document.createElement('li');
 li.innerHTML = 'a';
 
-// 末尾に追加
-display.appendChild(li);
+document.getElementById('display').appendChild(li);
 
 /*
 var data = JSON.parse(data);
