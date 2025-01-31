@@ -5,14 +5,14 @@ var data = [
 ];
 
 // 親要素を指定する
-var list = document.getElementById('list');
+var list = document.getElementById('display');
 
 // 追加する要素を作成
 var li = document.createElement('li');
 li.innerHTML = 'a';
 
 // 末尾に追加
-list.appendChild(li);
+display.appendChild(li);
 
 /*
 var data = JSON.parse(data);
