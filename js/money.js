@@ -4,6 +4,10 @@ const data = [
     { id:3, name:"薬局", price:1490 }
 ];
 
-const display = document.getElementById('display');
+for (let i = 0; i < data.length; i++) { 
+    document.getElementById('display').appendChild(data[i].name);
+}
 
-display.textContent = data[0].name;
+
+
+
