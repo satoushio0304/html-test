@@ -1,5 +1,14 @@
 [
     {"weight":1,"name":"書道"},
-    {"weight":2,"name":"スプラ"},
-    {"weight":3,"name":"ポケポケ"}
+    {"weight":1,"name":"ノート"},
+    {"weight":1,"name":"ノーと振り返り"},
+    {"weight":1,"name":"youtube"},
+    {"weight":1,"name":"kindele"},
+    {"weight":1,"name":"jmooc"},
+    {"weight":1,"name":"ランニング"},
+    {"weight":1,"name":"家計簿作り"},
+    {"weight":1,"name":"中国語"},
+    {"weight":1,"name":"英語"},
+    {"weight":1,"name":"スプラ"},
+    {"weight":1,"name":"ポケポケ"}
 ]
