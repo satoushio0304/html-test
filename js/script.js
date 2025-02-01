@@ -5,6 +5,3 @@ document.querySelectorAll('.title').forEach(title => {
     });
 
 });
-
-let d = new Date();
-document.getElementById('date').textContent = d;
