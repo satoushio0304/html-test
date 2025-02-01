@@ -70,9 +70,6 @@ for i in str:
     elif state == 8:
         if i == '{':
             state = 2
-    elif state == 9:
-        if i == ']':
-            state = 10
 
 
 print(keys_list)
