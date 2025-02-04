@@ -62,7 +62,6 @@ for (const i of str) {
         if (i == ',') {
             val, vals = put(val, vals);
             state = 6;
-            x.push(['!!!!'])
         } else if (i == '}') {
             val, vals = put(val, vals);
             vals, vals_list = put(vals, vals_list);
@@ -70,7 +69,6 @@ for (const i of str) {
             state = 7;
         } else {
             val += i;
-            x.push(['?????'])
         }
     } else if (state == 6) {
         if (i == '"') {
@@ -87,7 +85,7 @@ for (const i of str) {
             state = 2;
         }  
     }
-    x.push([state, i])
+
 }
 
 
@@ -96,6 +94,8 @@ console.log(vals);
 
 console.log(keys_list);
 console.log(vals_list);
+
+x.push(keys_list)
 
 document.getElementById('output').innerHTML = x;
 
