@@ -8,9 +8,9 @@ document.getElementById('time').innerHTML = new Date();
 
 let str = '[{"weight":1,"name":"書道"},{"weight":1,"name":"ノート"}]';
 
-var keys_list = [];
-var keys = [];
-var key = '';
+let keys_list = [];
+let keys = [];
+let key = '';
  
 let vals_list = [];
 let vals = [];
@@ -62,6 +62,7 @@ for (const i of str) {
         if (i == ',') {
             val, vals = put(val, vals);
             state = 6;
+            x.push(['!!!!'])
         } else if (i == '}') {
             val, vals = put(val, vals);
             vals, vals_list = put(vals, vals_list);
@@ -69,6 +70,7 @@ for (const i of str) {
             state = 7;
         } else {
             val += i;
+            x.push(['?????'])
         }
     } else if (state == 6) {
         if (i == '"') {
