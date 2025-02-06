@@ -17,12 +17,20 @@ body {
     align-items: center;
 }
 
+.output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13vh;
+    height: 15vh;
+}
+
 .button {
     width: 30vw;
     background-color: rgb(0, 0, 0, 0.3);
     color: rgb(255, 255, 255, 0.8);
     border: none;
-    font-size: 5vh;
+    font-size: 10vh;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     touch-action: manipulation;
 }
