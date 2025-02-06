@@ -6,7 +6,7 @@ document.querySelectorAll('.title').forEach(title => {
 
 document.getElementById('time').innerHTML = new Date();
 
-let str = '[{"weight":1,"name":"書道"},{"weight":1,"name":"ノート"}]';
+let data = '[{"weight":1,"name":"書道"},{"weight":1,"name":"ノート"}]';
 
 let keys_list = [];
 let keys = [];
@@ -21,7 +21,7 @@ let state = 0;
 let x = [];
 
 function put(a, b) {
-    if (typeof(a) === 'string') {
+    if (typeof(a) === 'dataing') {
         if ((a[0] == '"') && (a.slice(-1) == '"')) {
             a = a.slice(1,-1);
         }
@@ -34,7 +34,7 @@ function put(a, b) {
     return a, b;
 }
 
-for (const i of str) {
+for (const i of data) {
     if (state == 0) {
         if (i == '[') {
             state = 1;

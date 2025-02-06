@@ -1,4 +1,4 @@
-let display = "";
+let output = "";
 
 const result2 = x => {
     x += ",";
@@ -50,15 +50,15 @@ document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', function() {
 
         if (this.textContent == "C") {
-            display = "";
+            output =  "";
         } else if (this.textContent == "=") {
-            if (!['+','-','*','/'].includes(display.slice(-1))) {
-                display = result(display);
+            if (!['+','-','*','/'].includes(output.slice(-1))) {
+                output = result(output);
             }
         } else {
-            display += this.textContent;
+            output += this.textContent;
         }
-        document.getElementById('display').textContent = display;
+        document.getElementById('output').textContent = output;
     });
     
 });
