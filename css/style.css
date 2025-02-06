@@ -27,16 +27,17 @@ body {
 
 .button {
     width: 25vw;
-    background-color: rgb(0, 0, 0, 0.3);
-    color: rgb(255, 255, 255, 0.8);
-    border: none;
+    height: 7vh;
     font-size: 5vh;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    background-color: rgba(82, 82, 82, 0.557);
+    box-shadow: 0px 2px 5px rgba(57, 57, 57, 0.801);
+    border: none;
     touch-action: manipulation;
 }
 
 .button:hover {
-    background-color: rgb(0, 0, 0, 0.2);
+    background-color: rgba(158, 158, 158, 0.564);
 }
 
 .list { 
