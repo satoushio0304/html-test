@@ -71,7 +71,7 @@ document.querySelectorAll('.button').forEach(button => {
                     point = 0
                 }
             }
-        } else if (['+','-','*','/'].includes(this.textContent)) {
+        } else if (['+','*','/'].includes(this.textContent)) {
             if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
                 output += this.textContent;
                 point = 1
