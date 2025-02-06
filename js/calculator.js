@@ -57,6 +57,14 @@ document.querySelectorAll('.button').forEach(button => {
             if (!['+','-','*','/'].includes(output.slice(-1))) {
                 output = result(output);
             }
+        } else if (this.textContent == ".") {
+            if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
+                output += this.textContent;
+            }
+        } else if (['+','-','*','/'].includes(this.textContent)) {
+            if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
+                output += this.textContent;
+            }
         } else {
             output += this.textContent;
         }
