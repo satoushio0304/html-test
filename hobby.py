@@ -1,8 +1,48 @@
 import random
 import json
 
-# with open('data/hobby.json', encoding='utf-8') as f:
-#     print(random.choice([item['name'] for item in json.load(f) for _ in range(int(item['weight']))]))
+
+
+
+
+def load(path):
+    with open(path, encoding='utf-8') as f:
+        return f.read()
+
+def tolist(str):
+    l = []
+    ls = []
+    ele = ''
+    for i in str:
+        if i == ',':
+            l.append(ele)
+            ele = ''
+        elif i == '\n':
+            l.append(ele)
+            ele = ''
+            ls.append(l)
+            l = []
+        else:
+            ele += i
+    l.append(ele)
+    ele = ''
+    ls.append(l)
+    l = []
+    return ls
+
+
+path = 'data/data.csv'
+a = load(path)
+a = tolist(a)
+
+print(a)
+
+    
+
+
+def run():
+    with open('data/hobby.json', encoding='utf-8') as f:
+        print(random.choice([item['name'] for item in json.load(f) for _ in range(int(item['weight']))]))
 
 
 
@@ -17,6 +57,8 @@ def put(a, b):
         a = []
     return a, b
 
+
+'''
 str = '[{"weight":1,"name":"書道"},{"weight":1,"name":"ノート"}]'
 
 keys_list = []
@@ -74,7 +116,7 @@ for i in str:
 
 print(keys_list)
 print(vals_list)
-
+'''
 
 
 

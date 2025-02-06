@@ -95,7 +95,7 @@ console.log(vals);
 console.log(keys_list);
 console.log(vals_list);
 
-x.push(keys_list)
+x.push(vals_list)
 
 document.getElementById('output').innerHTML = x;
 
