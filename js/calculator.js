@@ -49,20 +49,24 @@ document.querySelectorAll('.button').forEach(button => {
 
     button.addEventListener('click', function() {
 
-        if (this.textContent == "C") {
+        if (["C"].includes(this.textContent)) {
             output =  "";
-        } else if (this.textContent == "←") {
+        } else if (["←"].includes(this.textContent)) {
             output = output.slice(0,-1);
-        } else if (this.textContent == "=") {
+        } else if (["="].includes(this.textContent)) {
             if (!['+','-','*','/'].includes(output.slice(-1))) {
                 output = result(output);
             }
-        } else if (this.textContent == ".") {
+        } else if (["."].includes(this.textContent)) {
             if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
                 output += this.textContent;
             }
         } else if (['+','-','*','/'].includes(this.textContent)) {
             if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
+                output += this.textContent;
+            }
+        } else if (['0','1','2','3','4','5','6','7','8','9'].includes(this.textContent)) {
+            if (!['0'].includes(output.slice(-1))) {
                 output += this.textContent;
             }
         } else {
