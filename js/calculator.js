@@ -51,6 +51,8 @@ document.querySelectorAll('.button').forEach(button => {
 
         if (this.textContent == "C") {
             output =  "";
+        } else if (this.textContent == "←") {
+            output = output.slice(0,-1);
         } else if (this.textContent == "=") {
             if (!['+','-','*','/'].includes(output.slice(-1))) {
                 output = result(output);
