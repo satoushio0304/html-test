@@ -24,17 +24,21 @@ const result = x => {
     x += ",";
     let a = "";
     let b = "+";
-    let c = 0;    
+    let c = 0;
     for (const i of x) {
-        if (i == '+' || i == '-' || i == ','){
-            a = result2(a)
-            if (b == '+'){
-                c += Number(a);
-            } else if (b == '-') {
-                c -= a;
-            }
-            a = "";
-            b = i;
+        if (['0','1','2','3','4','5','6','7','8','9'].includes(a.slice(-1))) {
+            if (i == '+' || i == '-' || i == ','){
+                a = result2(a)
+                if (b == '+'){
+                    c += Number(a);
+                } else if (b == '-') {
+                    c -= a;
+                }
+                a = "";
+                b = i;
+            } else {
+                a += i;
+            }       
         } else {
             a += i;
         }
@@ -51,30 +55,38 @@ document.querySelectorAll('.button').forEach(button => {
 
         if (["C"].includes(this.textContent)) {
             output =  "";
-            point = 1
+            point = 1;
         } else if (["←"].includes(this.textContent)) {
             if (['.'].includes(output.slice(0,-1))) { 
-                point = 1
+                point = 1;
             }
             output = output.slice(0,-1);
         } else if (["="].includes(this.textContent)) {
             if (!['+','-','*','/','.'].includes(output.slice(-1))) {
                 output = String(result(output));
                 if (Number.isInteger(Number(output))) {
-                    point = 1
+                    point = 1;
                 }
             }
         } else if (["."].includes(this.textContent)) {
             if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
                 if (point) {
                     output += this.textContent;
-                    point = 0
+                    point = 0;
                 }
             }
         } else if (['+','*','/'].includes(this.textContent)) {
             if (['0','1','2','3','4','5','6','7','8','9'].includes(output.slice(-1))) {
                 output += this.textContent;
+                point = 1;
+            }
+        } else if (['-'].includes(this.textContent)) {
+            if (['0','1','2','3','4','5','6','7','8','9','*','/'].includes(output.slice(-1))) {
+                output += this.textContent;
                 point = 1
+            } else if (output == '') {
+                output += this.textContent;
+                point = 1;
             }
         } else if (['0','1','2','3','4','5','6','7','8','9'].includes(this.textContent)) {
             if (!['0'].includes(output.slice(-1))) {
