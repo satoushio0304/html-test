@@ -1,14 +1,3 @@
-// [title class]のリンクを作成
-document.querySelectorAll('.title').forEach(title => {
-    title.addEventListener('click', () => {
-        window.location.href = title.id + '.html';
-    });
-});
-
-// ページを開いた時の時刻を表示
-document.getElementById('time').innerHTML = new Date();
-
-
 // 入力した文字列を配列に変換
 function txtToList(txtData) {
     //　キー
@@ -61,6 +50,19 @@ function txtToList(txtData) {
     return [keys,eless];
 }
 
+
+
+// [title class]のリンクを作成
+document.querySelectorAll('.title').forEach(title => {
+    title.addEventListener('click', () => {
+        window.location.href = title.id + '.html';
+    });
+});
+
+// ページを開いた時の時刻を表示
+document.getElementById('time').innerHTML = new Date();
+
+// ファイルが入れられたら
 document.getElementById('input').addEventListener('change', e => {
     const reader = new FileReader();
     reader.readAsText(e.target.files[0]); 
