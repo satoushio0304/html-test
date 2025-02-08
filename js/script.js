@@ -1,16 +1,11 @@
 // 入力した文字列を配列に変換
 function txtToList(txtData) {
-    //　キー
     let key = '';
     let keys = [];
-    //　要素
     let ele = '';
     let eles = [];
     let eless = [];
-    //　制御
     let cond = 0;
-    
-    // 文字列を前から順番に走査
     for (let i of txtData ) {
         switch (cond) {
             case 0:
