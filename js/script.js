@@ -1,108 +1,73 @@
+// [title class]のリンクを作成
 document.querySelectorAll('.title').forEach(title => {
     title.addEventListener('click', () => {
         window.location.href = title.id + '.html';
     });
 });
 
+// ページを開いた時の時刻を表示
 document.getElementById('time').innerHTML = new Date();
 
-let data = '[{"weight":1,"name":"書道"},{"weight":1,"name":"ノート"}]';
 
-let keys_list = [];
-let keys = [];
-let key = '';
- 
-let vals_list = [];
-let vals = [];
-let val = '';
-
-let state = 0;
-
-let x = [];
-
-function put(a, b) {
-    if (typeof(a) === 'dataing') {
-        if ((a[0] == '"') && (a.slice(-1) == '"')) {
-            a = a.slice(1,-1);
+// 入力した文字列を配列に変換
+function txtToList(txtData) {
+    //　キー
+    let key = '';
+    let keys = [];
+    //　要素
+    let ele = '';
+    let eles = [];
+    let eless = [];
+    //　制御
+    let cond = 0;
+    
+    // 文字列を前から順番に走査
+    for (let i of txtData ) {
+        switch (cond) {
+            case 0:
+                if ([':'].includes(i)) {
+                    cond = 1;
+                } else {
+                    throw new Error("ファイルの中身が正しくありません");
+                }
+                break;
+            case 1: // key入力中
+                if ([','].includes(i)) {
+                    cond = 2;
+                    keys.push(key);
+                    key = '';
+                } else {
+                    key += i;
+                }
+                break;
+            case 2: // ele入力中 
+                if ([':'].includes(i)) {
+                    cond = 1;
+                    eles.push(ele);
+                    ele = '';
+                    eless.push(eles);
+                    eles = [];
+                } else if ([','].includes(i)) {
+                    eles.push(ele);
+                    ele = '';
+                } else {
+                    ele += i;
+                }
+                break;
         }
-        b.push(a);
-        a = '';
-    } else if (Array.isArray(a)) {
-        b.push(a);
-        a = [];
     }
-    return a, b;
+    console.log(keys);
+    console.log(eless);
+    return [keys,eless];
 }
-
-for (const i of data) {
-    if (state == 0) {
-        if (i == '[') {
-            state = 1;
-        }
-    } else if (state == 1) {
-        if (i == '{') {
-            state = 2;
-        }  
-    } else if (state == 2) {
-        if (i == '"') {
-            state = 3;
-        }  
-    } else if (state == 3) {
-        if (i == '"') {
-            key, keys = put(key, keys);
-            state = 4;
-        } else {
-            key += i;
-        }
-    } else if (state == 4) {
-        if (i == ':') {
-            state = 5;
-        }  
-    } else if (state == 5) {
-        if (i == ',') {
-            val, vals = put(val, vals);
-            state = 6;
-        } else if (i == '}') {
-            val, vals = put(val, vals);
-            vals, vals_list = put(vals, vals_list);
-            keys, keys_list = put(keys, keys_list);
-            state = 7;
-        } else {
-            val += i;
-        }
-    } else if (state == 6) {
-        if (i == '"') {
-            state = 3;
-        }  
-    } else if (state == 7) {
-        if (i == ',') {
-            state = 8;
-        } else if (i == ']') {
-            state = 9;
-        }  
-    } else if (state == 8) {
-        if (i == '{') {
-            state = 2;
-        }  
-    }
-
-}
-
-
-console.log(keys);
-console.log(vals);
-
-console.log(keys_list);
-console.log(vals_list);
-
-x.push(vals_list)
-
-document.getElementById('output').innerHTML = x;
 
 document.getElementById('input').addEventListener('change', e => {
     const reader = new FileReader();
     reader.readAsText(e.target.files[0]); 
     reader.onload = e => {
+        // 入力したファイルの文字列をそのまま出力
         // document.getElementById('output').innerHTML = e.target.result;
+        // 入力したファイルの文字列を配列にして出力
+        document.getElementById('output').innerHTML = txtToList(e.target.result);
     }
 });
