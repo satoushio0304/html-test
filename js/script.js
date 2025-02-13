@@ -1,20 +1,8 @@
 // str to list
 const txtToList = (txtData) => {
-    let key = '';
-    let keys = [];
-    let ele = '';
-    let eles = [];
-    let eless = [];
-    let cond = 0;
+    let key = '',keys = [], ele = '', eles = [], eless = [], cond = 1;
     for (let i of txtData ) {
         switch (cond) {
-            case 0:
-                if ([':'].includes(i)) {
-                    cond = 1;
-                } else {
-                    throw new Error("ファイルの中身が正しくありません");
-                }
-                break;
             case 1: // key入力中
                 if ([','].includes(i)) {
                     cond = 2;
@@ -65,19 +53,12 @@ const money = (data) => {
 }
 
 const result2 = x => {
+    let a = "", b = "*", c = 1;
     x += ",";
-    let a = "";
-    let b = "*";
-    let c = 1;    
     for (const i of x) {
-        if (i == '*' || i == '/' || i == ','){
-            if (b == '*'){
-                c *= a;
-                a = "";
-            } else if (b == '/') {
-                c /= a;
-                a = "";
-            }
+        if ('*/,'.includes(i)){
+            c = b === '*' ? c * a : c / a;
+            a = "";
             b = i;
         } else {
             a += i;
@@ -87,19 +68,13 @@ const result2 = x => {
 }
 
 const result = x => {
+    let a = "", b = "+", c = 0;
     x += ",";
-    let a = "";
-    let b = "+";
-    let c = 0;
     for (const i of x) {
-        if (['0','1','2','3','4','5','6','7','8','9'].includes(a.slice(-1))) {
-            if (i == '+' || i == '-' || i == ','){
+        if (/[\d.]/.test(num.slice(-1))) {
+            if ('+-,'.includes(i)){
                 a = result2(a)
-                if (b == '+'){
-                    c += Number(a);
-                } else if (b == '-') {
-                    c -= a;
-                }
+                c = b === '+' ? c + Number(a) : c - a;
                 a = "";
                 b = i;
             } else {
@@ -112,56 +87,77 @@ const result = x => {
     return c;
 }
 
-let formula = "";
-let point = 1;
+class Calculator {
+    constructor() {
+        this.formula = "";
+        this.point = 1;
+        this.init();
+    }
 
-document.querySelectorAll('.button').forEach(button => {
-    button.addEventListener('click', function() {
-        if (["C"].includes(this.textContent)) {
-            formula =  "";
-            point = 1;
-        } else if (["←"].includes(this.textContent)) {
-            if (['.'].includes(formula.slice(0,-1))) { 
-                point = 1;
-            }
-            formula = formula.slice(0,-1);
-        } else if (["="].includes(this.textContent)) {
-            if (!['+','-','*','/','.'].includes(formula.slice(-1))) {
-                formula = String(result(formula));
-                if (Number.isInteger(Number(formula))) {
-                    point = 1;
-                }
-            }
-        } else if (["."].includes(this.textContent)) {
-            if (['0','1','2','3','4','5','6','7','8','9'].includes(formula.slice(-1))) {
-                if (point) {
-                    formula += this.textContent;
-                    point = 0;
-                }
-            }
-        } else if (['+','*','/'].includes(this.textContent)) {
-            if (['0','1','2','3','4','5','6','7','8','9'].includes(formula.slice(-1))) {
-                formula += this.textContent;
-                point = 1;
-            }
-        } else if (['-'].includes(this.textContent)) {
-            if (['0','1','2','3','4','5','6','7','8','9','*','/'].includes(formula.slice(-1))) {
-                formula += this.textContent;
-                point = 1
-            } else if (formula == '') {
-                formula += this.textContent;
-                point = 1;
-            }
-        } else if (['0','1','2','3','4','5','6','7','8','9'].includes(this.textContent)) {
-            if (!['0'].includes(formula.slice(-1))) {
-                formula += this.textContent;
-            }
-        } else {
-            formula += this.textContent;
+    init() {
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', () => this.handleButton(button.textContent));
+        });
+    }
+
+    handleButton(input) {
+        if (input === "C") {
+            this.reset();
+        } else if (input === "←") {
+            this.backspace();
+        } else if (input === "=") {
+            this.calculate();
+        } else if (input === "." && this.canAddDecimal()) {
+            this.formula += input;
+            this.point = 0;
+        } else if ('+*/'.includes(input) && this.canAddOperator()) {
+            this.formula += input;
+            this.point = 1;
+        } else if (input === "-" && this.canAddMinus()) {
+            this.formula += input;
+            this.point = 1;
+        } else if (/\d/.test(input) && this.canAddNumber(input)) {
+            this.formula += input;
         }
-        document.getElementById('formula').textContent = formula;
-    }); 
-});
+        document.getElementById('formula').textContent = this.formula;
+    }
+
+    reset() {
+        this.formula = "";
+        this.point = 1;
+    }
+
+    backspace() {
+        if (this.formula.endsWith(".")) this.point = 1;
+        this.formula = this.formula.slice(0, -1);
+    }
+
+    calculate() {
+        if (!/[\+\-\*\/\.]$/.test(this.formula)) {
+            this.formula = String(result(this.formula));
+            if (Number.isInteger(Number(this.formula))) this.point = 1;
+        }
+    }
+
+    canAddDecimal() {
+        return /\d$/.test(this.formula) && this.point;
+    }
+
+    canAddOperator() {
+        return /\d$/.test(this.formula);
+    }
+
+    canAddMinus() {
+        return /\d|\*|\/$/.test(this.formula) || this.formula === '';
+    }
+
+    canAddNumber(input) {
+        return !(input === "0" && this.formula.endsWith("0"));
+    }
+}
+
+// クラスのインスタンス生成
+new Calculator();
 
 // if class = title , id to link
 document.querySelectorAll('.title').forEach(title => {
@@ -177,9 +173,7 @@ document.getElementById('time').innerHTML = new Date();
 document.getElementById('input').addEventListener('change', e => {
     const reader = new FileReader();
     reader.readAsText(e.target.files[0]); 
-    reader.onload = e => {
-        money(txtToList(e.target.result));
-    }
+    reader.onload = e => money(txtToList(e.target.result));
 });
 
 document.getElementById('download').addEventListener('click', () => {
