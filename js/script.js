@@ -64,7 +64,7 @@ function money(data) {
         document.getElementById(data[0][2]).appendChild(li);
         sum += Number(data[1][2][i]);
     }
-    document.getElementById('output').textContent = sum;
+    document.getElementById('sum').textContent = sum;
 }
 
 // if class = title , id to link

@@ -95,7 +95,7 @@ document.querySelectorAll('.button').forEach(button => {
         } else {
             output += this.textContent;
         }
-        document.getElementById('output').textContent = output;
+        document.getElementById('formula').textContent = output;
     });
     
 });
