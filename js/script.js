@@ -1,5 +1,5 @@
 // str to list
-function txtToList(txtData) {
+const txtToList = (txtData) => {
     let key = '';
     let keys = [];
     let ele = '';
@@ -45,26 +45,23 @@ function txtToList(txtData) {
     return [keys,eless];
 }
 
+
+const makeLi = (data, i, j) => {
+    let li = document.createElement('li');
+    li.innerHTML = data[1][j][i];
+    document.getElementById(data[0][j]).appendChild(li);
+}
+
+const makeSum = (data) => data.reduce((previous, current) => previous + Number(current), 0);
+
 // list to html
-function money(data) {
-    var sum = 0;
-    for (let i = 0; i < data[1][0].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][0][i];
-        document.getElementById(data[0][0]).appendChild(li);
+const money = (data) => {
+    for (let j = 0; j < data[0].length; j++) {
+        for (let i = 0; i < data[1][0].length; i++) {
+            makeLi(data, i, j);
+        }
     }
-    for (let i = 0; i < data[1][1].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][1][i];
-        document.getElementById(data[0][1]).appendChild(li);
-    }
-    for (let i = 0; i < data[1][2].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][2][i];
-        document.getElementById(data[0][2]).appendChild(li);
-        sum += Number(data[1][2][i]);
-    }
-    document.getElementById('sum').textContent = sum;
+    document.getElementById('sum').textContent = makeSum(data[1][2]);
 }
 
 const result2 = x => {
