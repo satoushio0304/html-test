@@ -1,27 +1,4 @@
-function money(data) {
-    var sum = 0;
-    for (let i = 0; i < data[1][0].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][0][i];
-        document.getElementById(data[0][0]).appendChild(li);
-    }
-    for (let i = 0; i < data[1][1].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][1][i];
-        document.getElementById(data[0][1]).appendChild(li);
-    }
-    for (let i = 0; i < data[1][2].length; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = data[1][2][i];
-        document.getElementById(data[0][2]).appendChild(li);
-        sum += Number(data[1][2][i]);
-    }
-    document.getElementById('output').textContent = sum;
-}
-var data = txtToList(':id,1,2:name,ハンコ,病院:price,380,2690:');
-money(data);
-
-// 入力した文字列を配列に変換
+// str to list
 function txtToList(txtData) {
     let key = '';
     let keys = [];
@@ -68,7 +45,29 @@ function txtToList(txtData) {
     return [keys,eless];
 }
 
-// [title class]のリンクを作成
+// list to html
+function money(data) {
+    var sum = 0;
+    for (let i = 0; i < data[1][0].length; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = data[1][0][i];
+        document.getElementById(data[0][0]).appendChild(li);
+    }
+    for (let i = 0; i < data[1][1].length; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = data[1][1][i];
+        document.getElementById(data[0][1]).appendChild(li);
+    }
+    for (let i = 0; i < data[1][2].length; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = data[1][2][i];
+        document.getElementById(data[0][2]).appendChild(li);
+        sum += Number(data[1][2][i]);
+    }
+    document.getElementById('output').textContent = sum;
+}
+
+// if class = title , id to link
 document.querySelectorAll('.title').forEach(title => {
     title.addEventListener('click', () => {
         window.location.href = title.id + '.html';
@@ -86,6 +85,8 @@ document.getElementById('input').addEventListener('change', e => {
         // 入力したファイルの文字列をそのまま出力
         // document.getElementById('output').innerHTML = e.target.result;
         // 入力したファイルの文字列を配列にして出力
-        document.getElementById('output').innerHTML = txtToList(e.target.result);
+        // document.getElementById('output').innerHTML = txtToList(e.target.result);
+        // 入力した文字列を箇条書きで出力
+        money(txtToList(e.target.result));
     }
 });
