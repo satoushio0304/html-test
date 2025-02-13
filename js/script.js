@@ -184,3 +184,16 @@ document.getElementById('input').addEventListener('change', e => {
         money(txtToList(e.target.result));
     }
 });
+
+document.getElementById('download').addEventListener('click', () => {
+    const data = document.getElementById('sum').innerHTML;
+    const blob = new Blob([data], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+})
