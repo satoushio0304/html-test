@@ -68,8 +68,6 @@ function txtToList(txtData) {
     return [keys,eless];
 }
 
-
-
 // [title class]のリンクを作成
 document.querySelectorAll('.title').forEach(title => {
     title.addEventListener('click', () => {
