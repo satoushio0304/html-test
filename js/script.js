@@ -8,16 +8,22 @@ const calculate = (formula) => {
     if (formula[1] === '/') formula = Number(formula[0]) / Number(formula[2]);
     return formula;
 }
+
+const isNumber = (char) => !isNaN(char) && char !== '' && (char.slice(-1) !== '.');
+const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1 ;
+const isOperator = (char) => "+-*/".includes(char);
+
 let formula = [];
 
 document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', () => {
-        if ('C'.includes(button.textContent)) {
+        // 入力されたボタン button.textContent
+        if (button.textContent === 'C') {
             formula = [];
-        } else if ('←'.includes(button.textContent)) {
+        } else if (button.textContent === '←') {
             now = formula.pop().slice(0, -1);
             if (now !== '') formula.push(now);
-        } else if ('='.includes(button.textContent)) {
+        } else if (button.textContent === '=') {
             formula.forEach((v, i) => {
                 if (v === '*' || v === '/') {
                     formula[i + 1] = [formula[i - 1], formula[i], formula[i + 1]];
@@ -36,7 +42,7 @@ document.querySelectorAll('.button').forEach(button => {
             formula = formula.filter(v => v !== '');
             formula = calculate(formula);
             console.log(formula);
-        } else if ('0123456789'.includes(button.textContent)) {
+        } else if (isNumber(button.textContent)) {
             if (formula.length) {
                 now = formula.pop();
                 if (now == '0') {
@@ -64,43 +70,14 @@ document.querySelectorAll('.button').forEach(button => {
             } else {
                 formula.push(button.textContent);
             }
-        } else if ('.'.includes(button.textContent)) {
-            if (formula.length) {
-                now = formula.pop();
-                if (Number.isInteger(Number(now))) {
-                    formula.push(now + button.textContent);
-                } else {
-                    formula.push(now);
-                }
-            }
-        } else if ('-'.includes(button.textContent)) {
-            if (formula.length) {
-                now = formula.pop();
-                if (now.slice(-1) == '.') {
-                    formula.push(now);
-                } else if (now == '-') {
-                    formula.push(now);
-                } else {
-                    formula.push(now);
-                    formula.push(button.textContent);
-                }
-            } else {
-                formula.push(button.textContent);
-            }
-        } else if ('+*/'.includes(button.textContent)) {
-            if (formula.length) {
-                now = formula.pop();
-                if (now.slice(-1) == '.') {
-                    formula.push(now);
-                } else if (isNaN(now)) {
-                    formula.push(now);
-                } else {
-                    formula.push(now);
-                    formula.push(button.textContent);
-                }
-            }
+        } else if (button.textContent === '.' && formula.length !== 0 && isInteger(formula.slice(-1)[0])) {
+            formula.push(formula.pop() + button.textContent);
+        } else if (button.textContent === '-' && (formula.length === 0 || '+*/'.includes(formula.slice(-1)))) {
+            formula.push(button.textContent);
+        } else if (isOperator(button.textContent) && formula.length && isNumber(formula.slice(-1))) {
+            formula.push(button.textContent);
         }
-        document.getElementById('formula').textContent = formula.join('');
+        document.getElementById('formula').textContent = formula;//.join('');
     });
 });
 
