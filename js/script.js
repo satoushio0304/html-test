@@ -6,7 +6,7 @@ const calculate = (formula) => {
     else if (formula[1] === '/') formula = Number(formula[0]) / Number(formula[2]);
     return [String(formula)];
 }
-const nesting = (formula, operators) => formula.reduce((newFormula, v, i, array) => operators.includes(array[i - 1]) ? [...newFormula.slice(0, -2), [newFormula.at(-2), newFormula.at(-1), v]] : [...newFormula, v],[]);
+const formulaTree = (formula, operators) => formula.reduce((newFormula, v, i, array) => operators.includes(array[i - 1]) ? [...newFormula.slice(0, -2), [newFormula.at(-2), newFormula.at(-1), v]] : [...newFormula, v],[]);
 const isNumber = (char) => !isNaN(char) && char !== '' && (char.slice(-1) !== '.');
 const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1;
 const isOperator = (char) => "+-*/".includes(char);
@@ -15,12 +15,11 @@ document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', () => {
         if (button.textContent === 'C') formula = [];
         else if (button.textContent === '←' && formula.length) formula = formula.at(-1).length === 1 ? [...formula.slice(0, -1)] : [...formula.slice(0, -1), formula.at(-1).slice(0, -1)];
-        else if (button.textContent === '=') formula = calculate(nesting(nesting(formula, '/*'), '+-'));
+        else if (button.textContent === '=') formula = calculate(formulaTree(formulaTree(formula, '/*'), '+-'));
         else if (isNumber(button.textContent)) formula = !formula.length || (isOperator(formula.at(-1)) && isNumber(formula.at(-2))) ? [...formula, button.textContent] : formula.at(-1) !== '0' ? [...formula.slice(0, -1), formula.at(-1) + button.textContent] : [...formula];
         else if (button.textContent === '.' && isInteger(formula.at(-1))) formula = [...formula.slice(0, -1), formula.at(-1) + button.textContent];
         else if (button.textContent === '-' && (!formula.length || '+/*'.includes(formula.slice(-1)))) formula = [...formula, button.textContent];
         else if (isOperator(button.textContent) && isNumber(formula.at(-1))) formula = [...formula, button.textContent];
-        console.log(formula);
         document.getElementById('formula').textContent = formula.join('');
     });
 });
