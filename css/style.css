@@ -3,7 +3,7 @@ body {
     text-align: center;
     overflow: hidden;
     height: 100vh;
-    touch-action: none;
+    /*touch-action: none;*/
     font-family: serif;
 }
 
