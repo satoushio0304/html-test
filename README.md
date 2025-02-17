@@ -1,11 +1,5 @@
 # html-test
 
-## todo
-
-let myObj={id:0};
-
-let myId0=myObje.id;
-
-myObj.id=1;
-
-let myId1=myObje['id'];
+todo:
+    -idとclassの整理
+    -家計簿データ追加作成
