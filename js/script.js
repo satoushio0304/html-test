@@ -1,3 +1,4 @@
+// 木構造formulaを入力し、計算結果を出力
 const calculate = (formula) => {
     formula = formula.map(v => Array.isArray(v) ? calculate(v) : v);
     if (formula[1] === '+') formula = Number(formula[0]) + Number(formula[2]);
@@ -6,10 +7,14 @@ const calculate = (formula) => {
     else if (formula[1] === '/') formula = Number(formula[0]) / Number(formula[2]);
     return [String(formula)];
 }
-const formulaTree = (formula, operators) => formula.reduce((newFormula, v, i, array) => operators.includes(array[i - 1]) ? [...newFormula.slice(0, -2), [newFormula.at(-2), newFormula.at(-1), v]] : [...newFormula, v],[]);
+// 1次元配列formulaを入力し、木構造を出力
+const formulaTree = (formula, operators) => formula.reduce((newFormula, v, i, array) => operators.includes(array[i - 1]) ? [...newFormula.slice(0, -2), [newFormula.at(-2), newFormula.at(-1), v]] : [...newFormula, v], []);
+// 文字列種類確認関数
 const isNumber = (char) => !isNaN(char) && char !== '' && (char.slice(-1) !== '.');
 const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1;
 const isOperator = (char) => "+-*/".includes(char);
+
+// 電卓
 let formula = [];
 document.querySelectorAll('.button').forEach(button => {
     button.addEventListener('click', () => {
@@ -23,6 +28,34 @@ document.querySelectorAll('.button').forEach(button => {
         document.getElementById('formula').textContent = formula.join('');
     });
 });
+
+
+
+// 家計簿
+let inputData;
+
+document.getElementById('input').addEventListener('change', e => {
+    const reader = new FileReader();
+    reader.readAsText(e.target.files[0]);
+    reader.onload = e => {
+        inputData = e.target.result;
+        inputData = JSON.parse(inputData);
+        document.getElementById('input-data').textContent = inputData;
+    };
+});
+
+document.getElementById('download').addEventListener('click', () => {
+    const data = JSON.stringify(inputData, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+})
 
 const txtToList = (txtData) => {
     let key = '', keys = [], ele = '', eles = [], eless = [], cond = 1;
@@ -75,11 +108,15 @@ const money = (data) => {
     document.getElementById('sum').textContent = makeSum(data[1][2]);
 }
 
+
+
+/*
 document.getElementById('input').addEventListener('change', e => {
     const reader = new FileReader();
     reader.readAsText(e.target.files[0]);
     reader.onload = e => money(txtToList(e.target.result));
 });
+//*/
 
 document.getElementById('time').innerHTML = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
 document.querySelectorAll('.title').forEach(title => {
@@ -88,7 +125,7 @@ document.querySelectorAll('.title').forEach(title => {
     });
 });
 
-
+/*
 document.getElementById('download').addEventListener('click', () => {
     const data = document.getElementById('sum').innerHTML;
     const blob = new Blob([data], { type: "text/plain" });
@@ -100,4 +137,4 @@ document.getElementById('download').addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-})
+})//*/
