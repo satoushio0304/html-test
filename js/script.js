@@ -75,17 +75,11 @@ const money = (data) => {
     document.getElementById('sum').textContent = makeSum(data[1][2]);
 }
 
-class Money {
-    constructor() {
-        document.getElementById('input').addEventListener('change', e => {
-            const reader = new FileReader();
-            reader.readAsText(e.target.files[0]);
-            reader.onload = e => money(txtToList(e.target.result));
-        });
-    }
-}
-
-new Money();
+document.getElementById('input').addEventListener('change', e => {
+    const reader = new FileReader();
+    reader.readAsText(e.target.files[0]);
+    reader.onload = e => money(txtToList(e.target.result));
+});
 
 document.getElementById('time').innerHTML = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
 document.querySelectorAll('.title').forEach(title => {
