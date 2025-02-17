@@ -1,5 +1,4 @@
 # html-test
-
-todo:
+-todo:
     -idとclassの整理
     -家計簿データ追加作成
