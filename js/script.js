@@ -10,7 +10,7 @@ const calculate = (formula) => {
 }
 
 const isNumber = (char) => !isNaN(char) && char !== '' && (char.slice(-1) !== '.');
-const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1 ;
+const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1;
 const isOperator = (char) => "+-*/".includes(char);
 
 let formula = [];
@@ -41,43 +41,18 @@ document.querySelectorAll('.button').forEach(button => {
             });
             formula = formula.filter(v => v !== '');
             formula = calculate(formula);
-            console.log(formula);
         } else if (isNumber(button.textContent)) {
-            if (formula.length) {
-                now = formula.pop();
-                if (now == '0') {
-                    formula.push(now);
-                } else if (now == '-') {
-                    if (formula.length) {
-                        old = formula.pop();
-                        if (isNaN(old)) {
-                            formula.push(old);
-                            formula.push(now + button.textContent);
-                        } else {
-                            formula.push(old);
-                            formula.push(now);
-                            formula.push(button.textContent);
-                        }
-                    } else {
-                        formula.push(now + button.textContent);
-                    }
-                } else if (isNaN(now)) {
-                    formula.push(now);
-                    formula.push(button.textContent);
-                } else {
-                    formula.push(now + button.textContent);
-                }
-            } else {
-                formula.push(button.textContent);
-            }
-        } else if (button.textContent === '.' && formula.length !== 0 && isInteger(formula.slice(-1)[0])) {
+            if (!formula.length || (formula.length && ('+*/'.includes(formula.slice(-1)[0]))) || (formula.slice(-1)[0] === '-' && isNumber(formula.slice(-2)[0]))) formula.push(button.textContent);
+            else if (formula.slice(-1)[0] !== '0' || (formula.slice(-1)[0] === '-' && '+*/'.includes(formula.slice(-2)[0]))) formula.push(formula.pop() + button.textContent);
+        } else if (button.textContent === '.' && formula.length && isInteger(formula.slice(-1)[0])) {
             formula.push(formula.pop() + button.textContent);
-        } else if (button.textContent === '-' && (formula.length === 0 || '+*/'.includes(formula.slice(-1)))) {
+        } else if (button.textContent === '-' && (!formula.length || '+*/'.includes(formula.slice(-1)))) {
             formula.push(button.textContent);
-        } else if (isOperator(button.textContent) && formula.length && isNumber(formula.slice(-1))) {
+        } else if (isOperator(button.textContent) && isNumber(formula.slice(-1)[0])) {
             formula.push(button.textContent);
         }
-        document.getElementById('formula').textContent = formula;//.join('');
+        console.log(formula);
+        document.getElementById('formula').textContent = formula.join('');
     });
 });
 
