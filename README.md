@@ -1,5 +1,5 @@
 # html-test
 - todo:
-    - idとclassの整理
-    - class=buttonの見た目をvhやvw以外で整える
-    - 家計簿データ追加作成
+    - 電卓を隠す機能を追加
+    - 家計簿にデータを追加する機能を追加
+    - iPhoneにjsonを追加
