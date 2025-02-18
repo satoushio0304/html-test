@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>index</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/script.js" defer></script>
-    </head>
-    <body>
-        <div id="time"></div>
-        <!--家計簿-->
-        <input type="file" id="input">
-        <output class="output" id="input-data"></output>
-        <div class="area">
-            <ul class="list" id="id"></ul>
-            <ul class="list" id="name"></ul>
-            <ul class="list" id="price"></ul>
-        </div>
-        <output class="output" id="sum"></output>
-        <button id="download">ダウンロード</button>
-        <!--電卓-->
-        <output class="output" id="formula"></output>
-        
-            <button class="button">1</button>
-            <button class="button">2</button>
-            <button class="button">3</button>
-            <button class="button">4</button>
-            <button class="button">5</button>
-            <button class="button">6</button>
-            <button class="button">7</button>
-            <button class="button">8</button>
-            <button class="button">9</button>
-            <button class="button">←</button>
-            <button class="button">0</button>
-            <button class="button">.</button>
-            <button class="button">+</button>
-            <button class="button">-</button>
-            <button class="button">=</button>
-            <button class="button">*</button>
-            <button class="button">/</button>
-            <button class="button">C</button>
 
-    </body>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="time"></div>
+
+    <!--家計簿-->
+    <input type="file" id="input">
+    <output class="output" id="input-data"></output>
+    <ul class="list" id="id"></ul>
+    <ul class="list" id="name"></ul>
+    <ul class="list" id="price"></ul>
+    <output class="output" id="sum"></output>
+    <button id="download">ダウンロード</button>
+
+    <!--電卓-->
+    <div id="calculator">
+        <div class="formula">
+            <output id="formula"></output>
+        </div>
+        <button class="button">←</button>
+        <button class="button">C</button>
+        <button class="button">/</button>
+        <button class="button">*</button>
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">-</button>
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">+</button>
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">=</button>
+        <button class="button">.</button>
+        <button class="button">0</button>
+    </div>
+</body>
+
 </html>
