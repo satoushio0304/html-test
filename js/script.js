@@ -44,7 +44,7 @@ document.querySelectorAll('.button').forEach(button => {
 let inputData;
 let totalExpenditure = 0;
 
-document.getElementById('input').addEventListener('change', e => {
+document.getElementById('upload').addEventListener('change', e => {
     const reader = new FileReader();
     reader.readAsText(e.target.files[0]);
     reader.onload = e => {
