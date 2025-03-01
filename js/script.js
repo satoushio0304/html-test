@@ -26,7 +26,7 @@ const isOperator = (char) => "+-*/".includes(char);
 
 let formula = [];
 
-document.querySelectorAll('.button').forEach(button => {
+document.querySelectorAll('.calculator-button').forEach(button => {
     button.addEventListener('click', () => {
         if (button.textContent === 'C') formula = [];
         else if (button.textContent === '←' && formula.length) formula = formula.at(-1).length === 1 ? [...formula.slice(0, -1)] : [...formula.slice(0, -1), formula.at(-1).slice(0, -1)];
