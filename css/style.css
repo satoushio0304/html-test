@@ -36,9 +36,7 @@
     line-height: 30px;
     /*文字の色*/
     color: rgb(190, 190, 200);
-    /*文字のフォント*/
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    
     /*文字がはみ出したときの処理*/
     overflow-x: scroll;
 
@@ -71,9 +69,7 @@
     line-height: 30px;
     /*文字の色*/
     color: rgb(110, 110, 120);
-    /*文字のフォント*/
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    
     /*枠線*/
     border: none;
 
