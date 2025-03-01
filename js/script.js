@@ -41,40 +41,42 @@ document.querySelectorAll('.button').forEach(button => {
 
 
 // 家計簿
-let inputData;
-let totalExpenditure = 0;
+let data;
+let sum = 0;
 
-document.getElementById('upload').addEventListener('change', e => {
-    const reader = new FileReader();
-    reader.readAsText(e.target.files[0]);
-    reader.onload = e => {
-        inputData = e.target.result;
-        inputData = JSON.parse(inputData);
-        document.getElementById('input-data').textContent = inputData;
+document.getElementById('upload').addEventListener('click', e => {
+    document.querySelector("input").click();
+    document.querySelector("input").addEventListener('change', e => {
+        const reader = new FileReader();
+        reader.readAsText(e.target.files[0]);
+        reader.onload = e => {
+            data = e.target.result;
+            data = JSON.parse(data);
 
-        inputData.forEach(obj => {
-            keys = Object.keys(obj);
-            keys.forEach(key => {
-                const li = document.createElement('li');
-                li.innerHTML = obj[key];
-                document.getElementById(key).appendChild(li);
+            data.forEach(obj => {
+                keys = Object.keys(obj);
+                keys.forEach(key => {
+                    const li = document.createElement('li');
+                    li.innerHTML = obj[key];
+                    document.getElementById(key).appendChild(li);
+                });
             });
-        });
 
-        inputData.forEach(obj => {
-            keys = ['price'];
-            keys.forEach(key => {
-                totalExpenditure += Number(obj[key]);
-                console.log(totalExpenditure);
+            data.forEach(obj => {
+                keys = ['price'];
+                keys.forEach(key => {
+                    sum += Number(obj[key]);
+                    console.log(sum);
+                });
             });
-        });
-        document.getElementById('sum').innerHTML = totalExpenditure;
+            document.getElementById('sum').innerHTML = sum;
 
-    };
+        };
+    });
 });
 
 document.getElementById('download').addEventListener('click', () => {
-    const data = JSON.stringify(inputData, null, 2);
+    data = JSON.stringify(data, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -84,7 +86,7 @@ document.getElementById('download').addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-})
+});
 
 
 
