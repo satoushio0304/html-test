@@ -42,37 +42,48 @@ document.querySelectorAll('.calculator-button').forEach(button => {
 
 // 家計簿
 let data;
+let addData;
 let sum = 0;
 
-document.getElementById('upload').addEventListener('click', e => {
-    document.querySelector("input").click();
-    document.querySelector("input").addEventListener('change', e => {
-        const reader = new FileReader();
-        reader.readAsText(e.target.files[0]);
-        reader.onload = e => {
-            data = e.target.result;
-            data = JSON.parse(data);
+const showData = (data) => {
 
-            data.forEach(obj => {
-                keys = Object.keys(obj);
-                keys.forEach(key => {
-                    const li = document.createElement('li');
-                    li.innerHTML = obj[key];
-                    document.getElementById(key).appendChild(li);
-                });
-            });
-
-            data.forEach(obj => {
-                keys = ['price'];
-                keys.forEach(key => {
-                    sum += Number(obj[key]);
-                    console.log(sum);
-                });
-            });
-            document.getElementById('sum').innerHTML = sum;
-
-        };
+    data.forEach(obj => {
+        keys = Object.keys(obj);
+        keys.forEach(key => {
+            let li = document.createElement('li');
+            li.innerHTML = obj[key];
+            document.getElementById(key).appendChild(li);
+        });
     });
+
+    data.forEach(obj => {
+        keys = ['price'];
+        keys.forEach(key => {
+            sum += Number(obj[key]);
+            console.log(sum);
+        });
+    });
+    document.getElementById('sum').innerHTML = sum;
+};
+
+document.getElementById('upload').addEventListener('change', e => {
+    const reader = new FileReader();
+    reader.readAsText(e.target.files[0]);
+    reader.onload = e => {
+        data = e.target.result;
+        data = JSON.parse(data);
+        showData(data);
+    };
+});
+
+document.getElementById('add').addEventListener('click', () => {
+    addId = document.getElementById('add-id').value;
+    addName = document.getElementById('add-name').value;
+    addPrice = document.getElementById('add-price').value;
+    addData = {id : addId, name : addName, price : addPrice};
+    showData([addData]);
+    data.push(addData);
+
 });
 
 document.getElementById('download').addEventListener('click', () => {
