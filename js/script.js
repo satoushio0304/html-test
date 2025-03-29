@@ -50,9 +50,9 @@ const showData = (data) => {
     data.forEach(obj => {
         keys = Object.keys(obj);
         keys.forEach(key => {
-            let li = document.createElement('li');
-            li.innerHTML = obj[key];
-            document.getElementById(key).appendChild(li);
+            let item = document.createElement('button');
+            item.innerHTML = obj[key];
+            document.getElementById('items').appendChild(item);
         });
     });
 
