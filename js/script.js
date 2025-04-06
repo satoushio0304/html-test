@@ -10,6 +10,7 @@ document.querySelectorAll('.title').forEach(title => {
 
 
 // 電卓
+// 木を計算
 const calculate = (formula) => {
     formula = formula.map(v => Array.isArray(v) ? calculate(v) : v);
     if (formula[1] === '+') formula = Number(formula[0]) + Number(formula[2]);
@@ -18,14 +19,15 @@ const calculate = (formula) => {
     else if (formula[1] === '/') formula = Number(formula[0]) / Number(formula[2]);
     return [String(formula)];
 }
-
+//式から木
 const formulaTree = (formula, operators) => formula.reduce((newFormula, v, i, array) => operators.includes(array[i - 1]) ? [...newFormula.slice(0, -2), [newFormula.at(-2), newFormula.at(-1), v]] : [...newFormula, v], []);
+//条件
 const isNumber = (char) => !isNaN(char) && char !== '' && (char.slice(-1) !== '.');
 const isInteger = (char) => isNumber(char) && char.indexOf('.') == -1;
 const isOperator = (char) => "+-*/".includes(char);
-
+//式
 let formula = [];
-
+//電卓操作
 document.querySelectorAll('.calculator-button').forEach(button => {
     button.addEventListener('click', () => {
         if (button.textContent === 'C') formula = [];
@@ -41,13 +43,10 @@ document.querySelectorAll('.calculator-button').forEach(button => {
 
 
 // 家計簿
-let data;
-let addData;
-let nulldata = {"id":"","name":"","price":""};
-let sum = 0;
+let datas = [];
 
 const showData = (data) => {
-
+    document.getElementById('items').innerHTML = null;
     data.forEach(obj => {
         keys = Object.keys(obj);
         keys.forEach(key => {
@@ -56,7 +55,7 @@ const showData = (data) => {
             document.getElementById('items').appendChild(item);
         });
     });
-
+    let sum = 0;
     data.forEach(obj => {
         keys = ['price'];
         keys.forEach(key => {
@@ -86,7 +85,8 @@ document.getElementById('upload').addEventListener('change', e => {
     reader.onload = e => {
         data = e.target.result;
         data = JSON.parse(data);
-        showData(data);
+        datas = datas.concat(data);
+        showData(datas);
     };
 });
 
@@ -95,20 +95,17 @@ document.getElementById('add').addEventListener('click', () => {
     addName = document.getElementById('add-name').value;
     addPrice = document.getElementById('add-price').value;
     addData = {id : addId, name : addName, price : addPrice};
-    showData([addData]);
-    data.push(addData);
+    datas = datas.concat([addData]);
+    showData(datas);
     document.getElementById('add-id').value = "";
     document.getElementById('add-name').value = "";
     document.getElementById('add-price').value = "";
 });
 
 document.getElementById('download').addEventListener('click', () => {
-    downloadData(data);
+    downloadData(datas);
 });
 
-document.getElementById('newfile').addEventListener('click', () => {
-    downloadData(nulldata);
-});
 
 
 
