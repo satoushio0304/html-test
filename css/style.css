@@ -95,8 +95,11 @@
     background-color: rgb(255, 255, 255);
     /*幅*/
     width: 360px;
-
+    /*文字の大きさ*/
+    /*改行による子要素同士の隙間をなくす*/
+    font-size: 0px;
 }
+
 #items *{
     /*色*/
     background-color: rgb(200, 200, 200);
@@ -113,7 +116,7 @@
     color: rgb(70, 70, 70);
     
     /*枠線*/
-    border: none;
+    border-color: rgb(192, 192, 192);
 
     /*内側の余裕*/
     padding: 0px;
