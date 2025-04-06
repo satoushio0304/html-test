@@ -83,7 +83,9 @@ document.getElementById('add').addEventListener('click', () => {
     addData = {id : addId, name : addName, price : addPrice};
     showData([addData]);
     data.push(addData);
-
+    document.getElementById('add-id').value = "";
+    document.getElementById('add-name').value = "";
+    document.getElementById('add-price').value = "";
 });
 
 document.getElementById('download').addEventListener('click', () => {

@@ -90,4 +90,64 @@
 }
 
 /*家計簿*/
+#items {
+    /*色*/
+    background-color: rgb(255, 255, 255);
+    /*幅*/
+    width: 360px;
 
+}
+#items *{
+    /*色*/
+    background-color: rgb(200, 200, 200);
+    /*幅*/
+    width: 108px;
+    /*高さ*/
+    height: 20px;
+    
+    /*文字の大きさ*/
+    font-size: 15px;
+    /*文字の高さ*/
+    line-height: 15px;
+    /*文字の色*/
+    color: rgb(70, 70, 70);
+    
+    /*枠線*/
+    border: none;
+
+    /*内側の余裕*/
+    padding: 0px;
+    /*外側の余裕*/
+    margin: 0px;
+
+    /*ダブルタッチによる拡大無効化*/
+    touch-action: manipulation;
+
+}
+
+#adds{
+    /*文字の大きさ*/
+    /*改行による子要素同士の隙間をなくす*/
+    font-size: 0px;
+}
+
+#add-id {
+    /*幅*/
+    width: 100px;
+    /*高さ*/
+    height: 20px;
+}
+
+#add-name {
+    /*幅*/
+    width: 100px;
+    /*高さ*/
+    height: 20px;
+}
+
+#add-price {
+    /*幅*/
+    width: 100px;
+    /*高さ*/
+    height: 20px;
+}
