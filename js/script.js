@@ -43,6 +43,7 @@ document.querySelectorAll('.calculator-button').forEach(button => {
 // 家計簿
 let data;
 let addData;
+let nulldata = {"id":"","name":"","price":""};
 let sum = 0;
 
 const showData = (data) => {
@@ -64,6 +65,19 @@ const showData = (data) => {
         });
     });
     document.getElementById('sum').innerHTML = sum;
+};
+
+const downloadData = (data) => {
+    data = JSON.stringify(data, null, 2);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 };
 
 document.getElementById('upload').addEventListener('change', e => {
@@ -89,17 +103,13 @@ document.getElementById('add').addEventListener('click', () => {
 });
 
 document.getElementById('download').addEventListener('click', () => {
-    data = JSON.stringify(data, null, 2);
-    const blob = new Blob([data], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    downloadData(data);
 });
+
+document.getElementById('newfile').addEventListener('click', () => {
+    downloadData(nulldata);
+});
+
 
 
 
